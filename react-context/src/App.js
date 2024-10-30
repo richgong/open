@@ -1,10 +1,11 @@
 import "./App.css";
-import React, { createContext, useContext, useState } from "react";
-
-export const GreetingContext = createContext();
+import React, { useContext, useState } from "react";
+import { GreetingProvider, GreetingContext } from "./GreetingProvider";
 
 function ChildComponent() {
   const { greeting, name, setGreeting, setName } = useContext(GreetingContext);
+  const [newGreeting, setNewGreeting] = useState("");
+  const [newName, setNewName] = useState("");
 
   return (
     <div>
@@ -12,12 +13,30 @@ function ChildComponent() {
       <p>
         {greeting}, <b>{name}</b>, what's good!
       </p>
-      <button onClick={() => setGreeting("What's up, React!")}>
-        Update Greeting
-      </button>
-      <button onClick={() => setName("Jane")}>
-        Update Name
-      </button>
+
+      <div>
+        <input
+          type="text"
+          placeholder="New Greeting"
+          value={newGreeting}
+          onChange={(e) => setNewGreeting(e.target.value)}
+        />
+        <button onClick={() => setGreeting(newGreeting)}>
+          Update Greeting
+        </button>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="New Name"
+          value={newName}
+          onChange={(e) => setNewName(e.target.value)}
+        />
+        <button onClick={() => setName(newName)}>
+          Update Name
+        </button>
+      </div>
     </div>
   );
 }
@@ -32,18 +51,13 @@ function ParentComponent() {
 }
 
 function App() {
-  const [greeting, setGreeting] = useState("YOOOOOOOO");
-  const [name, setName] = useState("John");
-
-  const context = { greeting, name, setGreeting, setName };
-
   return (
-    <GreetingContext.Provider value={context}>
+    <GreetingProvider>
       <div className="App">
         <h1>App Component</h1>
         <ParentComponent />
       </div>
-    </GreetingContext.Provider>
+    </GreetingProvider>
   );
 }
 

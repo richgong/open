@@ -1,12 +1,11 @@
-# How to
+# How to use React Context
 ```
 npm start
 ```
 
-Look at `App.js`
+- Look at `App.js`, `Providers.js`, `GreetingProvider.js`, `ThemeProvider.js`
 
-
-# Getting Started with Create React App
+## Localdev
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
