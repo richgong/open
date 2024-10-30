@@ -1,9 +1,16 @@
 # How to use React Context
-```
-npm start
-```
+
+This project taught me about React Context providers.
+
+Basically a global form of state and actions (functions to change state).
 
 - Look at `App.js`, `Providers.js`, `GreetingProvider.js`, `ThemeProvider.js`
+
+To run it:
+```
+npm install
+npm start
+```
 
 ## Localdev
 
