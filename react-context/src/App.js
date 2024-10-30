@@ -3,8 +3,9 @@ import React, { createContext, useContext, useState } from "react";
 
 export const GreetingContext = createContext();
 
-function ChildComponent({}) {
-  const { greeting, name, setGreeting } = useContext(GreetingContext);
+function ChildComponent() {
+  const { greeting, name, setGreeting, setName } = useContext(GreetingContext);
+
   return (
     <div>
       <b>Child Component:</b>
@@ -13,6 +14,9 @@ function ChildComponent({}) {
       </p>
       <button onClick={() => setGreeting("What's up, React!")}>
         Update Greeting
+      </button>
+      <button onClick={() => setName("Jane")}>
+        Update Name
       </button>
     </div>
   );
@@ -29,9 +33,9 @@ function ParentComponent() {
 
 function App() {
   const [greeting, setGreeting] = useState("YOOOOOOOO");
+  const [name, setName] = useState("John");
 
-  const name = "John";
-  const context = { greeting, name, setGreeting };
+  const context = { greeting, name, setGreeting, setName };
 
   return (
     <GreetingContext.Provider value={context}>
